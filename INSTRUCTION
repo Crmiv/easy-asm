@@ -1,0 +1,16 @@
+if: in x86-64 os,
+	use 32-bit asm
+you should :
+	as --32 xxx.s -o xxx.o
+	ld -m elf_i386 -s -o xxx.o xxx
+
+
+else: in x86 os,
+	shouldn't use '--32' option '-m' 'elf_i386'
+
+if you use shared-lib
+	like use:
+		ld -dynamic-linker /lib/ld-linux.so.2 \ 
+		-o test-lib test-lib.o -lc
+
+
